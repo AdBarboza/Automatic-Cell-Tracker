@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'tumour_cell.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myproject',
-        'USER': 'myprojectuser',
-        'PASSWORD': 'password',
+        'NAME': 'automatic',
+        'USER': 'automatic',
+        'PASSWORD': 'automatic',
         'HOST': 'localhost',
         'PORT': '5432',
     }
