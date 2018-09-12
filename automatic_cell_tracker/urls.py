@@ -17,8 +17,12 @@ from django.contrib import admin
 from django.contrib.auth import urls as authurls
 from django.urls import path
 from django.conf.urls import include, url
+from components.home import views as homeviews
 
 urlpatterns = [
     url(r'admin/', admin.site.urls),
-    path('', include('components.home.urls'))
+    path('', include('components.home.urls')),
+    path('analisis/', homeviews.analisis, name='analisis'),
+    path('index/', homeviews.index, name='index'),
+    path('resultados/', homeviews.resultados, name='resultados')
 ]
