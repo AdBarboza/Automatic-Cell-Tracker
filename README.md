@@ -5,7 +5,6 @@ Web plataform for the Automatic-Cell-Tracker
 Requiriments
 * Python 3.6
 * Pip 18
-* Virtualenv 16 (install with pip "pip install virtualenv")
 * PostgreSQL 10
 
 Set Up database
