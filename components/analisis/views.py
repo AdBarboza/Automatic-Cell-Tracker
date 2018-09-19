@@ -9,6 +9,7 @@ import requests
 from io import BytesIO
 from io import StringIO
 from PIL import Image
+import os
 
 
 # Create your views here.
@@ -47,7 +48,8 @@ def descargar_resultado(request):
 
     url_r = request.session['url_r']
     response = requests.get(url_r)
-    img = BytesIO(response.content)
+    img = Image.open(BytesIO(response.content))
+    img.save(os.path.join(os.path.expanduser("~"), "Downloads" + '/resultado.png'))
     print(url_r)
     return redirect(url_r)
     
