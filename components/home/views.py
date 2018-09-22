@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.contrib.sessions.models import Session as session
 from django.http import HttpResponse
 from components.home.forms import UploadFileForm
 import cloudinary
@@ -23,8 +24,10 @@ def analisis(request):
         if form.is_valid():
             #do things
             imagen = form.cleaned_data['file']
+            print("IMAGEN: ",type(imagen))
             cld = cloudinary.uploader.upload(imagen)
             url = cld['url']
+            request.session['url'] = url
             return render(request, 'subir.html', {'form': form, 'imgsrc' : url})
 
 
