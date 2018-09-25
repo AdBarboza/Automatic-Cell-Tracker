@@ -19,6 +19,7 @@ from django.urls import path
 from django.conf.urls import include, url
 from components.home import views as homeviews
 from components.analisis import views as analisisviews
+from components.tratamiento import views as tratamientoviews
 from django.conf import settings
 
 urlpatterns = [
@@ -28,5 +29,9 @@ urlpatterns = [
     path('index/', homeviews.index, name='index'),
     path('resultados/', analisisviews.resultados, name='resultados'),
     path('guardar_resultados/', analisisviews.guardar_resultados, name='guardar_resultados'),
-    path('descargar_resultado/', analisisviews.descargar_resultado, name='descargar_resultado')
+    path('descargar_resultado/', analisisviews.descargar_resultado, name='descargar_resultado'),
+    path('tratamientos/', tratamientoviews.index_tratamiento, name='tratamientos_crud'),
+    path('tratamientos/crear_tratamiento', tratamientoviews.crear_tratamiento, name='tratamientos_crear'),
+    path('tratamientos/form_crear_tratamiento', tratamientoviews.form_crear_tratamiento, name="form_crear_tratamiento")
+
 ]

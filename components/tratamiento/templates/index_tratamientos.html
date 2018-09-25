@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tratamientos</title>
+</head>
+<body>
+    <h1>Tratamientos</h1>
+    <a href="http://127.0.0.1:8000/tratamientos/crear_tratamiento">Crear tratamientos</a>
+
+    {% for t in tratamientos %}
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+        </tr>
+        <tbody>
+            <tr>
+                <td>{{t.id}}</td>
+                <td>{{t.nombre}}</td>
+                <td>{{t.descripcion}}</td>
+                <td><a href="#"></a></td>
+                <td><a href="#"></a></td>
+            </tr>
+        </tbody>
+    </table>
+    {% endfor %}
+</body>
+</html>
