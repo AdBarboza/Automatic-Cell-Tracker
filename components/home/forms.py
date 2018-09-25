@@ -24,4 +24,14 @@ class ResultadoForm(forms.Form):
     Fecha_Muestra = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'class':'datepicker'}))
     Fecha_Analisis = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'class':'datepicker'}))
 
+class ExperimentoForm(forms.Form):
+    nombre = forms.CharField()
+    CHOICES_G=[('A','A'),('B','B'),('O','O')]
+    grupo_sanguineo = forms.ChoiceField(choices=CHOICES_G)
+    CHOICES_F=[('+','+'),('-','-')]
+    factor_H = forms.ChoiceField(choices=CHOICES_F)
+    alergias = forms.CharField(widget=forms.Textarea)
+    padecimiento = forms.CharField(widget=forms.Textarea)
+
+
   

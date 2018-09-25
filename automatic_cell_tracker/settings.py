@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'components.home',
     'components.login',
     'components.register',
+    'components.experimento',
     'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',

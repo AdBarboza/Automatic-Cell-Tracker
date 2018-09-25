@@ -7,3 +7,4 @@ Keras==2.2.2
 tensorflow==1.10.0
 cloudinary==1.12.0
 image==1.5.24
+django-datetimepicker==3.14
