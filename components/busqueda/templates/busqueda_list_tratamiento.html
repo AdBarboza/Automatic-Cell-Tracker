@@ -21,11 +21,8 @@
           <a class="navbar-brand pacifico" href="">Automatic Cell Detector</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="http://127.0.0.1:8000/index/">Home</a></li>
-            <li><a href="http://127.0.0.1:8000/analisis/">Análisis</a></li>
-            <li><a href="http://127.0.0.1:8000/experimento/">Experimentos</a></li>
-            <li><a href="http://127.0.0.1:8000/tratamientos/">Tratamientos</a></li>
-            <li class="active"><a href="http://127.0.0.1:8000/busqueda/">Búsquedas</a></li>
+          <li><a href="http://127.0.0.1:8000/index/">Home</a></li>
+          <li><a href="http://127.0.0.1:8000/analisis/">Análisis</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hola Usuario</a></li>
@@ -36,34 +33,37 @@
   </div>
 
   <div>
-    <h1>Experimentos</h1>
+    <h1>Analisis</h1>
   </div>
-
   <div class="w3-container">
     <h1>Experimentos</h1>
     <table class="w3-table w3-striped">
-      <thead class="blue-bg white">
+      <thead>
         <tr>
-          <th>Codigo</th>
-          <th>Nombre</th>
+          <th>Imagen</th>
+          <th>Paciente</th>
+          <th>Observaciones</th>
           <th>Ver</th>
           <th>Editar</th>
           <th>Eliminar</th>
         </tr>
       </thead>
       <tbody>
-        {% for Experimento in object_list %}
+        {% for analisis in object_list %}
         <tr>
-          <td>{{ Experimento.id }}</td>
-          <td>{{ Experimento.nombre }}</td>
-          <td><a href="{% url 'Experimento_view' Experimento.id %}">Ver</a></td>
-          <td><a href="{% url 'Experimento_edit' Experimento.id %}">Editar</a></td>
-          <td><a href="{% url 'Experimento_delete' Experimento.id %}">Eliminar</a></td>
+          <td>{{ analisis.url_resultado }}</td>
+          <td>{{ analisis.paciente }}</td>
+          <td>{{ analisis.observaciones }}</td>
+          <td><a href="">Ver</a></td>
+          <td><a href="">Editar</a></td>
+          <td><a href="">Eliminar</a></td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
     </div>
+
+
   <div>
     <li><a class="btn btn-default" href="http://127.0.0.1:8000/busqueda">Volver</a></li>
   </div>

@@ -6,6 +6,7 @@ from django.http import HttpResponse
 
 from components.experimento.models import Experimento
 from components.analisis.models import Resultado
+from components.tratamiento.models improt Tratamiento
 from components.busqueda.forms import BusquedaNombreForm, BusquedaAnalisisForm, BusquedaTratamientoForm
 
 @login_required
@@ -51,9 +52,9 @@ def busqueda_tratamiento(request):
     if request.method == 'POST':
         if form.is_valid():
             searchterm = form.cleaned_data['Tratamiento']
-            search_result = Experimento.objects.filter(nombre__contains=searchterm)
-            return render(request, 'busqueda_list.html', {'object_list': search_result})
+            search_result = Tratamiento.objects.filter(descripcion__contains=searchterm)
+            return render(request, 'busqueda_list_tratamiento.html', {'object_list': search_result})
 
   
-    return render(request, 'busqueda_form.html', {'form': form})
+    return render(request, 'busqueda_form_tratamiento.html', {'form': form})
 
