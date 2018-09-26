@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Francois+One|Pacifico" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <!-- <link rel="shortcut icon" href="../browser.ico"/> -->
 </head>
@@ -21,8 +22,11 @@
                     <a class="navbar-brand pacifico" href="">Automatic Cell Detector</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="http://127.0.0.1:8000/index/">Home</a></li>
-                    <li><a href="http://127.0.0.1:8000/analisis/">Análisis</a></li>
+                        <li><a href="http://127.0.0.1:8000/index/">Home</a></li>
+                        <li><a href="http://127.0.0.1:8000/analisis/">Análisis</a></li>
+                        <li  class="active"><a href="http://127.0.0.1:8000/experimento/">Experimentos</a></li>
+                        <li><a href="http://127.0.0.1:8000/tratamientos/">Tratamientos</a></li>
+                        <li><a href="http://127.0.0.1:8000/busqueda/">Búsquedas</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hola Usuario</a></li>
@@ -32,40 +36,49 @@
         </nav>
     </div>
 
-    <div>
-        <h1>Experimento</h1>
-    </div>
+    <div class="w3-container"> 
+        <h1>Ver experimento</h1>
+        <div class="w3-panel w3-pale-blue w3-leftbar w3-topbar w3-bottombar w3-rightbar w3-border-blue">
+        <h5>Experimento</h5>
+        <h4>{{object.nombre}}</h4>
+        </div>
 
-    <div>
-        <h3>Nombre: {{object.nombre}}</h2>
-    </div>
 
-    <div>
-        <h3>Codigo: {{object.id}}</h2>
-    </div>
+        <div class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+        <h5>Código</h5>
+        <p>{{object.id}}</p>
+        </div>
 
-    <div>
-        <h3>Sexo: {{object.sexo}}</h2>
-    </div>
+        <div class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+        <h5>Sexo</h5>
+        <p>{{object.sexo}}</p>
+        </div>
 
-    <div>
-        <h3>Grupo Sanguineo: {{object.gp_sanguineo}}</h2>
-    </div>
+        <div class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+        <h5>Grupo sanguíneo</h5>
+        <p>{{object.gp_sanguineo}}</p>
+        </div>
 
-    <div>
-        <h3>Factor H: {{object.factor_h}}</h2>
-    </div>
+        <div class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+        <h5>Alergías</h5>
+        <p>{{object.alergias}}</p>
+        </div>
 
-    <div>
-        <h3>Alergias: {{object.alergias}}</h2>
-    </div>
+        <div class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+        <h5>Factor H</h5>
+        <p>{{object.factor_h}}</p>
+        </div>
 
-    <div>
-        <h3>Padecimiento: {{object.padecimiento}}</h2>
-    </div>
+        <div class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+        <h5>Padecimiento</h5>
+        <p>{{object.padecimiento}}</p>
+        </div>       
 
-    <div>
-        <li><a class="btn btn-default" href="{% url 'Experimento_list' %}">Volver</a></li>
+        <div>
+            <a class="btn btn-default" href="{% url 'Experimento_list' %}">Volver</a>
+        </div>
+
+
     </div>
 
     <footer class="footer top-space blue-bg white">
