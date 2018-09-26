@@ -159,7 +159,7 @@ class Cell_Segmentation():
 
 
     def predict(self, X):
-        start_time = time.time()
+        K.clear_session()
 
 
         #Load test data

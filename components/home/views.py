@@ -4,6 +4,8 @@ from django.contrib.sessions.models import Session as session
 from django.http import HttpResponse
 from components.home.forms import UploadFileForm
 import cloudinary
+
+from components.experimento.models import Experimento
 # Create your views here.
 @login_required
 def index(request):
@@ -24,7 +26,6 @@ def analisis(request):
         if form.is_valid():
             #do things
             imagen = form.cleaned_data['file']
-            print("IMAGEN: ",type(imagen))
             cld = cloudinary.uploader.upload(imagen)
             url = cld['url']
             request.session['url'] = url
