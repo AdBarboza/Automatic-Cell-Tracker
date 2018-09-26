@@ -19,10 +19,10 @@
         <tbody>
             <tr>
                 <td>{{t.id}}</td>
-                <td>{{t.nombre}}</td>
-                <td>{{t.descripcion}}</td>
-                <td><a href="#"></a></td>
-                <td><a href="#"></a></td>
+                <td>{{t.Nombre}}</td>
+                <td>{{t.Descripcion}}</td>
+                <td><a href="{% url 'modificar_tratamiento' t.id %}">Modificar</a></td>
+                <td><a href="{% url 'eliminar_tratamiento' t.id %}">Eliminar</a></td>
             </tr>
         </tbody>
     </table>

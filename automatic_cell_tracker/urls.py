@@ -30,8 +30,12 @@ urlpatterns = [
     path('resultados/', analisisviews.resultados, name='resultados'),
     path('guardar_resultados/', analisisviews.guardar_resultados, name='guardar_resultados'),
     path('descargar_resultado/', analisisviews.descargar_resultado, name='descargar_resultado'),
-    path('tratamientos/', tratamientoviews.index_tratamiento, name='tratamientos_crud'),
+    path('tratamientos/', tratamientoviews.index_tratamiento, name='tratamientos_index'),
     path('tratamientos/crear_tratamiento', tratamientoviews.crear_tratamiento, name='tratamientos_crear'),
-    path('tratamientos/form_crear_tratamiento', tratamientoviews.form_crear_tratamiento, name="form_crear_tratamiento")
+    path('tratamientos/form_crear_tratamiento', tratamientoviews.form_crear_tratamiento, name="form_crear_tratamiento"),
+    path('tratamientos/eliminar_tratamiento/<int:id>/', tratamientoviews.eliminar_tratamiento, name="eliminar_tratamiento"),
+    path('tratamientos/modificar_tratamiento/<int:id>/', tratamientoviews.modificar_tratamiento, name="modificar_tratamiento"),
+    path('tratamientos/form_modificar_tratamiento', tratamientoviews.form_modificar_tratamiento, name="form_modificar_tratamiento")
+    #form_modificar_tratamiento
 
 ]
