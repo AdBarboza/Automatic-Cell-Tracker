@@ -52,7 +52,7 @@ def busqueda_tratamiento(request):
     if request.method == 'POST':
         if form.is_valid():
             searchterm = form.cleaned_data['Tratamiento']
-            search_result = Tratamiento.objects.filter(descripcion__contains=searchterm)
+            search_result = Tratamiento.objects.filter(nombre__contains=searchterm)
             return render(request, 'busqueda_list_tratamiento.html', {'object_list': search_result})
 
   
