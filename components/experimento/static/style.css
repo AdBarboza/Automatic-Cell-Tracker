@@ -19,6 +19,10 @@ a{
   color: #172A40;
 }
 
+.pale-blue{
+  color:#fff!important;background-color:#172A40!important
+}
+
 .font-big-size{
   font-size: 80px;
 }
