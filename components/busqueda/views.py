@@ -6,7 +6,7 @@ from django.http import HttpResponse
 
 from components.experimento.models import Experimento
 from components.analisis.models import Resultado
-from components.tratamiento.models improt Tratamiento
+from components.tratamiento.models import Tratamiento
 from components.busqueda.forms import BusquedaNombreForm, BusquedaAnalisisForm, BusquedaTratamientoForm
 
 @login_required
