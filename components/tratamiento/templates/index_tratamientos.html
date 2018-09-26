@@ -6,7 +6,8 @@
 	<title>Automatic Cell Detector</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Francois+One|Pacifico" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 	<!-- <link rel="shortcut icon" href="../browser.ico"/> -->
 </head>
@@ -22,11 +23,7 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="">Home</a></li>
 					<li><a href="http://127.0.0.1:8000/analisis/">Análisis</a></li>
-<<<<<<< HEAD
-					<li><a href="http://127.0.0.1:8000/experimento/">Experimentos</a></li>
-=======
 					<li><a href="http://127.0.0.1:8000/tratamientos/">Tratamientos</a></li>
->>>>>>> tratamiento
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#"><span class="glyphicon glyphicon-user"></span> Hola Usuario</a></li>
@@ -37,31 +34,33 @@
 	</div>
 
 	<div class="container">
-		<h1>Bienvenido a Automatic Tracker Cell</h1>
+            <h1>Tratamientos</h1>
+            <a href="http://127.0.0.1:8000/tratamientos/crear_tratamiento">Crear tratamientos</a>
+       
+            <table class="w3-table w3-striped">
+                <thead class="blue-bg white">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Ver</th>
+                        <th>Modificar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for t in tratamientos %}
+                    <tr>
+                        <td>{{t.nombre}}</td>
+                        <td>{{t.descripcion}}</td>
+                        <td><a href="{% url 'ver_tratamiento' t.id %}">Ver</a></td>
+                        <td><a href="{% url 'modificar_tratamiento' t.id %}">Modificar</a></td>
+                        <td><a href="{% url 'eliminar_tratamiento' t.id %}">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+                
 	</div>
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 
 	<footer class="footer top-space blue-bg white">
 		<div class="container">
@@ -98,3 +97,4 @@
 </body>
 
 </html>
+

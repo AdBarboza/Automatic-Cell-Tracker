@@ -17,6 +17,10 @@ def ExperimentoList(request):
 @login_required
 def ExperimentoView(request,id):
     obj = Experimento.objects.get(id=id)
+<<<<<<< HEAD
+=======
+    print(obj)
+>>>>>>> tratamiento
     return render(request, 'experimento_detail.html',{'object': obj})
 
 @login_required
@@ -26,13 +30,20 @@ def ExperimentoCreate(request):
     if request.method == 'POST':
         if form.is_valid():
             nombre = form.cleaned_data['nombre']
+<<<<<<< HEAD
             sexo = form.cleaned_data['sexo']
+=======
+>>>>>>> tratamiento
             gp_sanguineo = form.cleaned_data['grupo_sanguineo']
             factor_h = form.cleaned_data['factor_H']
             alergias = form.cleaned_data['alergias']
             padecimiento = form.cleaned_data['padecimiento']
 
+<<<<<<< HEAD
             resultado = Experimento(nombre = nombre, sexo = sexo, gp_sanguineo = gp_sanguineo, factor_h = factor_h,
+=======
+            resultado = Experimento(nombre = nombre, gp_sanguineo = gp_sanguineo, factor_h = factor_h,
+>>>>>>> tratamiento
                                          alergias = alergias, padecimiento = padecimiento)
 
             resultado.save()
@@ -43,6 +54,13 @@ def ExperimentoCreate(request):
 @login_required
 def ExperimentoUpdate(request,id):
     obj = Experimento.objects.get(id=id)
+<<<<<<< HEAD
+=======
+    data = {'nombre': obj.nombre, 'grupo_sanguineo': obj.gp_sanguineo,
+            'factor_H': obj.factor_h, 'alergias': obj.alergias,
+            'padecimiento': obj.padecimiento}
+    print(data)
+>>>>>>> tratamiento
 
     if request.method == 'POST':
         form = ExperimentoForm(request.POST, request.FILES)
@@ -56,9 +74,14 @@ def ExperimentoUpdate(request,id):
             obj.save()
             return redirect('Experimento_list')
 
+<<<<<<< HEAD
     #form = ExperimentoForm(request.POST, request.FILES, initial=data)
     form.fields['nombre'].initial = obj.nombre
     form.fields['sexo'].initial = obj.sexo
+=======
+    form = ExperimentoForm(request.POST, request.FILES, initial=data)
+    form.fields['nombre'].initial = obj.nombre
+>>>>>>> tratamiento
     form.fields['grupo_sanguineo'].initial = obj.gp_sanguineo
     form.fields['factor_H'].initial = obj.factor_h
     form.fields['alergias'].initial = obj.alergias
