@@ -6,3 +6,5 @@ numpy==1.14.5
 Keras==2.2.2
 cloudinary==1.12.0
 image==1.5.24
+django-datetimepicker==3.14
+requests==2.19.1
