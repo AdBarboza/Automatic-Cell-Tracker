@@ -8,3 +8,4 @@ class Resultado(models.Model):
     fch_analisis = models.DateTimeField()
     observaciones = models.CharField(max_length=1000)
     paciente = models.CharField(max_length=50)
+    objects = models.Manager()
