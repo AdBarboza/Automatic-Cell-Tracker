@@ -56,7 +56,7 @@ def ExperimentoUpdate(request,id):
             obj.save()
             return redirect('Experimento_list')
 
-    #form = ExperimentoForm(request.POST, request.FILES, initial=data)
+    form = ExperimentoForm(request.POST, request.FILES)
     form.fields['nombre'].initial = obj.nombre
     form.fields['sexo'].initial = obj.sexo
     form.fields['grupo_sanguineo'].initial = obj.gp_sanguineo
