@@ -4,6 +4,7 @@ from django.urls import reverse
 
 class Experimento(models.Model):
     nombre = models.CharField(max_length=100)
+    sexo = models.CharField(max_length=1)
     gp_sanguineo = models.CharField(max_length=1)
     factor_h = models.CharField(max_length=1)
     alergias = models.CharField(max_length=1000)
