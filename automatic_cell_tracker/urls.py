@@ -16,10 +16,6 @@ urlpatterns = [
     path('guardar_resultados/', analisisviews.guardar_resultados, name='guardar_resultados'),
     path('descargar_resultado/', analisisviews.descargar_resultado, name='descargar_resultado'),
     path('experimento/', include('components.experimento.urls')),
-<<<<<<< HEAD
-    path('busqueda/', include('components.busqueda.urls'))
-=======
     path('busqueda/', include('components.busqueda.urls')),
     path('tratamientos/', include('components.tratamiento.urls'))
->>>>>>> tratamiento
 ]
