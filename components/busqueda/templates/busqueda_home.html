@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Automatic Cell Detector</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Francois+One|Pacifico" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+  <!-- <link rel="shortcut icon" href="../browser.ico"/> -->
+</head>
+
+<body>
+
+  <div>
+    <nav class="navbar navbar-default navigation">
+      <div class="container-fluid micro-top-space">
+        <div class="navbar-header">
+          <a class="navbar-brand pacifico" href="">Automatic Cell Detector</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="http://127.0.0.1:8000/index/">Home</a></li>
+          <li><a href="http://127.0.0.1:8000/analisis/">Análisis</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Hola Usuario</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Salir</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+
+  <div>
+    <li><a class="btn btn-default" href="{% url 'busqueda_nombre' %}">Busqueda por nombre de paciente</a></li>
+    <li><a class="btn btn-default" href="{% url 'busqueda_analisis' %}">Busqueda por analisis</a></li>
+    <li><a class="btn btn-default" href="{% url 'busqueda_tratamiento' %}">Busqueda por tratamiento</a></li>
+  </div>
+
+  <footer class="footer top-space blue-bg white">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 mini-top-space">
+          <h1 class="pacifico white">Developed by ISLC S.A &copy;</h1>
+        </div>
+
+        <div class="col-sm-3 mini-top-space">
+          <h2 class="pacifico white">Contact US</h2>
+          <a href="#" class="white a-hover">https://www.islcsa.com</a></br>
+          <h5 class="white">islc@gmail.com</h5>
+          <h5 class="white">+506 888-8888</h5>
+        </div>
+
+        <div class="col-sm-6 mini-top-space">
+          <h2 class="pacifico white">Collaborators</h2>
+          <div class="col-sm-6">
+            <a href="https://www.facebook.com/ParmaResearchGroup/"><img src="{% static 'parma80.png' %}" alt="Smiley face"></a>
+          </div>
+
+          <div class="col-sm-6">
+            <a href="https://www.facebook.com/ParmaResearchGroup/"><img src="{% static 'lab.png' %}" alt="Smiley face"></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>

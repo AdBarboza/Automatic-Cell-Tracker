@@ -28,6 +28,15 @@ a{
   color: red;
 }
 
+.pale-blue{
+  color:#000;
+  background-color:#ffffff;
+}
+
+.border-blue{
+  border-color: #172A40;
+}
+
 .pacifico{
   font-family: 'Pacifico', cursive;
 }
