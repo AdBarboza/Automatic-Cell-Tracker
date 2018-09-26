@@ -37,7 +37,7 @@ def resultados(request):
 def guardar_resultados(request):
     form = ResultadoForm(request.POST, request.FILES)
     if form.is_valid():
-        experimento = Experimento.objects.get(id=6)
+        experimento = Experimento.objects.get(id=2)
         url = request.session['url']
         url_r = request.session['url_r']
         fch_m = form.cleaned_data['Fecha_Muestra']
