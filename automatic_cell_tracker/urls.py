@@ -35,7 +35,10 @@ urlpatterns = [
     path('tratamientos/form_crear_tratamiento', tratamientoviews.form_crear_tratamiento, name="form_crear_tratamiento"),
     path('tratamientos/eliminar_tratamiento/<int:id>/', tratamientoviews.eliminar_tratamiento, name="eliminar_tratamiento"),
     path('tratamientos/modificar_tratamiento/<int:id>/', tratamientoviews.modificar_tratamiento, name="modificar_tratamiento"),
-    path('tratamientos/form_modificar_tratamiento', tratamientoviews.form_modificar_tratamiento, name="form_modificar_tratamiento")
-    #form_modificar_tratamiento
+    path('tratamientos/form_modificar_tratamiento', tratamientoviews.form_modificar_tratamiento, name="form_modificar_tratamiento"),
+    path('tratamientos/ver_tratamiento/<int:id>/', tratamientoviews.ver_tratamiento, name="ver_tratamiento"),
+    path('tratamientos/registrar_observacion_tratamiento/<int:id>/', tratamientoviews.registrar_observacion_tratamiento, name="registrar_observacion_tratamiento"),
+    path('tratamientos/form_registrar_observacion', tratamientoviews.form_registrar_observacion, name='form_registrar_observacion')
+    #form_modificar_tratamiento registrar_observacion_tratamiento
 
 ]

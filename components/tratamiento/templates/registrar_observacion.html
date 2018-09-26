@@ -6,7 +6,8 @@
 	<title>Automatic Cell Detector</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Francois+One|Pacifico" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 	<!-- <link rel="shortcut icon" href="../browser.ico"/> -->
 </head>
@@ -33,15 +34,18 @@
 	</div>
 
 	<div class="container">
-      <h1>Crear tratamiento</h1>
-      <form enctype="multipart/form-data" method="post" action="{% url 'form_crear_tratamiento' %}">
-          {% csrf_token %}
-          <table>
-            {{ form.as_p}}
-          </table>
-  
-          <input type="submit">
-        </form>
+            <h1>Registrar observación</h1>
+            <form class="w3-container" enctype="multipart/form-data" id="form_registrar_observacion" method="post" action="{% url 'form_registrar_observacion' %}">
+                {% csrf_token %}
+                <p>
+                <label>Descripción</label> <br>
+                    <textarea rows="4" cols="50" name="descripcion" form="form_registrar_observacion" placeholder="Escriba la descripción..."></textarea>
+                <p>
+                    <input type="hidden" value={{id}} name="id">
+                <p>
+                    <input type="submit" class="w3-button w3-blue">
+            </form>
+                
 	</div>
 
 	<footer class="footer top-space blue-bg white">
@@ -79,3 +83,4 @@
 </body>
 
 </html>
+
