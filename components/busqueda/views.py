@@ -36,7 +36,7 @@ def busqueda_analisis(request):
         if form.is_valid():
             searchterm = form.cleaned_data['Observaciones']
             search_result = Resultado.objects.filter(observaciones__contains=searchterm)
-            return render(request, 'busqueda_list.html', {'object_list': search_result})
+            return render(request, 'busqueda_list_analisis.html', {'object_list': search_result})
 
   
     return render(request, 'busqueda_form_analisis.html', {'form': form})
