@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.sessions.models import Session as session
 from django.http import HttpResponse
 from .segmentation import segmentation
-from components.home.forms import ResultadoForm
+from components.analisis.forms import ResultadoForm, UploadFileForm
 from components.analisis import models
 import requests
 from io import BytesIO
@@ -13,7 +13,6 @@ import os
 
 from components.experimento.models import Experimento
 
-from components.home.forms import UploadFileForm
 import cloudinary
 
 guardado = False
@@ -40,8 +39,8 @@ def analisis(request):
 def resultados(request):
     form = ResultadoForm(request.POST, request.FILES)
 
-    #all_entries = Experimento.objects.all()
-    #form.fields['experimento'].choices = [ (o.id, o.nombre) for o in all_entries]
+    all_entries = Experimento.objects.all()
+    form.fields['experimento'].choices = [ (o.id, o.nombre) for o in all_entries]
 
     url = request.session['url']
     url_r = ''
@@ -57,7 +56,8 @@ def resultados(request):
 def guardar_resultados(request):
     form = ResultadoForm(request.POST, request.FILES)
     if form.is_valid():
-        experimento = Experimento.objects.get(id=2)
+        experimento = form.cleaned_data['experimento']
+        print("Experimento ID: ", experimento)
         url = request.session['url']
         url_r = request.session['url_r']
         fch_m = form.cleaned_data['Fecha_Muestra']
@@ -68,8 +68,6 @@ def guardar_resultados(request):
                                         fch_muestra = fch_m, fch_analisis = fch_a, observaciones = obs)
         print("AHHHHHHHHHHHHHHHHHHHHHHHHHH")
         resultado.save()
-        
-        guardado = True
 
     return redirect('resultados')
 

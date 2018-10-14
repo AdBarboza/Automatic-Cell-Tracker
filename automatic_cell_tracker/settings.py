@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'components.analisis',
     'components.home',
     'components.login',
-    'components.register',
     'components.experimento',
     'components.busqueda',
     'components.tratamiento',
