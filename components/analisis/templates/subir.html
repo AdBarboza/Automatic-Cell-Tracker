@@ -2,24 +2,25 @@
 
 {% block content %}
 
-  <center>
-    <h1>Análisis de imágenes</h1>
-    <form enctype="multipart/form-data" method="post" action="{% url 'analisis' %}">
-      {% csrf_token %}
-      <table>
-        {{ form.as_p}}
-      </table><input type="submit">
-      <img class="img-fluid d-block" id="imagen" src="{{ imgsrc }}">
-    </form>
-
-    <br>
-    <br>
-    <br>
-
+<center>
+  <h1>Análisis de imágenes</h1>
+  <form enctype="multipart/form-data" method="post" action="{% url 'analisis' %}">
+    {% csrf_token %}
     <div>
       <li><a class="btn btn-default" href="{% url 'resultados' %}">Analizar</a></li>
     </div>
-  </center>
+    <table>
+      {{ form.as_p}}
+    </table><input type="submit">
+    <img class="img-fluid d-block" id="imagen" src="{{ imgsrc }}">
+  </form>
+
+  <br>
+  <br>
+  <br>
+
+
+</center>
 
 
 {% endblock %}

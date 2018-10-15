@@ -39,9 +39,6 @@ def analisis(request):
 def resultados(request):
     form = ResultadoForm(request.POST, request.FILES)
 
-    all_entries = Experimento.objects.all()
-    form.fields['experimento'].choices = [ (o.id, o.nombre) for o in all_entries]
-
     url = request.session['url']
     url_r = ''
     if guardado:
@@ -55,6 +52,7 @@ def resultados(request):
 @login_required
 def guardar_resultados(request):
     form = ResultadoForm(request.POST, request.FILES)
+    print("AHHHHHHHHHHHHHHHHHHHHHHHHHH")
     if form.is_valid():
         experimento = form.cleaned_data['experimento']
         print("Experimento ID: ", experimento)
@@ -63,11 +61,13 @@ def guardar_resultados(request):
         fch_m = form.cleaned_data['Fecha_Muestra']
         fch_a = form.cleaned_data['Fecha_Analisis']
         obs = form.cleaned_data['Observaciones']
+    else:
+        print(form.errors)
 
-        resultado = models.Resultado(experimento = experimento, url_original = url, url_resultado = url_r,
-                                        fch_muestra = fch_m, fch_analisis = fch_a, observaciones = obs)
-        print("AHHHHHHHHHHHHHHHHHHHHHHHHHH")
-        resultado.save()
+    resultado = models.Resultado(experimento = experimento, url_original = url, url_resultado = url_r,
+                                    fch_muestra = fch_m, fch_analisis = fch_a, observaciones = obs)
+    print("AHHHHHHHHHHHHHHHHHHHHHHHHHH")
+    resultado.save()
 
     return redirect('resultados')
 
