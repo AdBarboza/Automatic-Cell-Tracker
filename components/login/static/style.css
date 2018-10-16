@@ -99,6 +99,10 @@ a{
   margin-top: 10%;
 }
 
+.macro-top-space{
+  margin-top: 20%;
+}
+
 .max-bottom-space{
   margin-bottom: 55%;
 }
@@ -175,14 +179,6 @@ a{
    border-top: 0;
    width: 100%;
    left: 0;
-}
-
-#footer {
-    padding-top: 10px;
-    padding-bottom: 0px;
-    position:fixed;
-    bottom:0;
-    width:100%;
 }
 
 .a-hover:hover{
@@ -283,4 +279,16 @@ a{
     color: #d9383a;
     background-color: #fff7dc;
   }
+}
+
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+  background-color: #172a40;
+  color: #FFF7DC;
 }
