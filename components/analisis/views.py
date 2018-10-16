@@ -59,10 +59,9 @@ def analisis(request):
 @login_required
 def guardar_resultados(request):
     form = ResultadoForm(request.POST, request.FILES)
-    print("AHHHHHHHHHHHHHHHHHHHHHHHHHH")
     time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
     if form.is_valid():
-        experimento = Experimento.objects.get(id=int(form.cleaned_data['experimento']))
+        experimento = form.cleaned_data['experimento']
         print("Experimento ID: ", experimento)
         url = request.session['url']
         url_r = request.session['url_r']
