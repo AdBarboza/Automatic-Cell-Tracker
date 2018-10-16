@@ -7,6 +7,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from components.experimento.forms import ExperimentoForm
 
 from components.experimento.models import Experimento
+from components.bitacora.models import Bitacora
+from time import gmtime, strftime
 
 @login_required
 def ExperimentoList(request):
@@ -24,6 +26,7 @@ def ExperimentoCreate(request):
 
     if request.method == 'POST':
         if form.is_valid():
+            time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
             nombre = form.cleaned_data['nombre']
             sexo = form.cleaned_data['sexo']
             gp_sanguineo = form.cleaned_data['grupo_sanguineo']
@@ -33,6 +36,9 @@ def ExperimentoCreate(request):
 
             resultado = Experimento(nombre = nombre, sexo = sexo, gp_sanguineo = gp_sanguineo, factor_h = factor_h,
                                          alergias = alergias, padecimiento = padecimiento)
+
+            bitacora = Bitacora(fecha = time, categoria = "Experimento Registrado", descripcion = "Se ha registrado el experimento '" + nombre + "'.")
+            bitacora.save()
 
             resultado.save()
             return redirect('Experimento_list')
@@ -44,6 +50,7 @@ def ExperimentoUpdate(request,id):
     obj = Experimento.objects.get(id=id)
 
     if request.method == 'POST':
+        time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
         form = ExperimentoForm(request.POST, request.FILES)
         if form.is_valid():
             obj.nombre = form.cleaned_data['nombre']
@@ -53,6 +60,8 @@ def ExperimentoUpdate(request,id):
             obj.padecimiento = form.cleaned_data['padecimiento']
 
             obj.save()
+            bitacora = Bitacora(fecha = time, categoria = "Experimento Modificado", descripcion = "Se ha modificado el experimento '" + obj.nombre + "'.")
+            bitacora.save()
             return redirect('Experimento_list')
 
     form = ExperimentoForm(request.POST, request.FILES)
@@ -67,6 +76,9 @@ def ExperimentoUpdate(request,id):
 
 @login_required
 def ExperimentoDelete(request, id):
+    time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
     obj = Experimento.objects.get(id=id)
+    bitacora = Bitacora(fecha = time, categoria = "Experimento Eliminado", descripcion = "Se ha eliminado el experimento '" + obj.nombre + "'.")
+    bitacora.save()
     obj.delete()
     return redirect('Experimento_list')

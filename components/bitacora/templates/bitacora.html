@@ -1,0 +1,30 @@
+{% extends "layout_bit.html" %}
+
+{% block content %}
+
+
+<div class="w3-container">
+  <h1>Bitácora de Eventos</h1>
+  <table class="w3-table w3-striped">
+    <thead class="blue-bg white">
+      <tr>
+        <th>Fecha</th>
+        <th>Categoría</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for Bitacora in object_list %}
+      <tr>
+        <td>{{ Bitacora.fecha }}</td>
+        <td>{{ Bitacora.categoria }}</td>
+        <td>{{ Bitacora.descripcion }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+
+
+{% endblock %}

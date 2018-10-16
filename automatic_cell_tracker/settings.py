@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'components.login',
     'components.experimento',
     'components.busqueda',
+    'components.bitacora',
     'components.tratamiento',
     'cloudinary',
     'django.contrib.admin',
