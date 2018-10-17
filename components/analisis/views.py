@@ -67,14 +67,15 @@ def guardar_resultados(request):
         fch_m = form.cleaned_data['Fecha_Muestra']
         fch_a = form.cleaned_data['Fecha_Analisis']
         obs = form.cleaned_data['Observaciones']
+
+        resultado = Resultado(experimento = experimento, url_original = url, url_resultado = url_r,
+                                    fch_muestra = fch_m, fch_analisis = fch_a, observaciones = obs)
+        resultado.save()
+        bitacora = Bitacora(fecha = time, categoria = "Análisis Guardado", descripcion = "Se ha guardado la información del análisis hecho.")
+        bitacora.save()
+
     else:
         print(form.errors)
-
-    resultado = Resultado(experimento = experimento, url_original = url, url_resultado = url_r,
-                                    fch_muestra = fch_m, fch_analisis = fch_a, observaciones = obs)
-    resultado.save()
-    bitacora = Bitacora(fecha = time, categoria = "Análisis Guardado", descripcion = "Se ha guardado la información del análisis hecho.")
-    bitacora.save()
 
     return redirect('resultados')
 
