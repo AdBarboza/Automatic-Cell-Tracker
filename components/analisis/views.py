@@ -62,7 +62,6 @@ def guardar_resultados(request):
     time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
     if form.is_valid():
         experimento = form.cleaned_data['experimento']
-        print("Experimento ID: ", experimento)
         url = request.session['url']
         url_r = request.session['url_r']
         fch_m = form.cleaned_data['Fecha_Muestra']
