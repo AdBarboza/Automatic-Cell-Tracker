@@ -1,17 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Tratamientos</title>
-</head>
+{% extends "layout_tratamiento.html" %}
+
+{% block content %}
+
 <body>
-    <h1>Crear tratamiento</h1>
+    <h1>Modificar tratamiento</h1>
     <form enctype="multipart/form-data" method="post" action="{% url 'form_modificar_tratamiento' %}">
         {% csrf_token %}
         <table>
-          {{ form }}          
+          {{ form.as_p }}          
         </table>
         <input type="hidden" name="id" value=id>
         <input type="submit">
       </form>
 </body>
-</html>
+
+{% endblock %}
