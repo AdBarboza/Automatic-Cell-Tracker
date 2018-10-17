@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'components.bitacora',
     'components.informes',
     'components.tratamiento',
+    'components.correo',
     'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -141,3 +142,12 @@ CLOUDINARY = {
   'api_key': '828139415984935',  
   'api_secret': 'DZ9DtVWg6QTTwkU1-g67qJDDgJU',  
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'trackeraiproyecto@gmail.com'
+EMAIL_HOST_PASSWORD = 'tracks81'
+
+# PDF_DIR = os.path.abspath(os.path.join(BASE_DIR, '../data/info'))

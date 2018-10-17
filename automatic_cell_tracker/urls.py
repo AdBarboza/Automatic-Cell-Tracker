@@ -15,5 +15,6 @@ urlpatterns = [
     path('busqueda/', include('components.busqueda.urls')),
     path('bitacora/', include('components.bitacora.urls')),
     path('informe/', include('components.informes.urls')),
-    path('tratamientos/', include('components.tratamiento.urls'))
+    path('tratamientos/', include('components.tratamiento.urls')),
+    path('correo/',include('components.correo.urls'))
 ]
