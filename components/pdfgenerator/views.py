@@ -9,10 +9,12 @@ from components.experimento.models import Experimento
 from components.bitacora.models import Bitacora
 from components.analisis.models import Resultado
 from components.tratamiento.models import Tratamiento
+from components.tratamiento.models import ObservacionTratamiento
 
 def generate(request,id):
     experimento = Experimento.objects.get(id=id)
     resultados_list = Resultado.objects.all().filter(experimento=experimento)
+    tratamientos_list = Tratamiento.objects.all().filter(experimento=experimento)
 
     # Create the HttpResponse object with the appropriate PDF headers.
     response = HttpResponse(content_type='application/pdf')
@@ -45,6 +47,24 @@ def generate(request,id):
         p.drawString(100, row_level-40, "Observaciones: "+ resultado.observaciones)
         logo = ImageReader(str(resultado.url_resultado))
         p.drawImage(logo, 100, row_level-325, mask='auto')
+        row_level=700
+        p.showPage()
+    
+    p.drawString(100,row_level-50, "Tratamientos: ")
+    for tratamiento in tratamientos_list:
+        row_level-=100
+        p.drawString(100, row_level, "Nombre: "+ tratamiento.nombre)
+        p.drawString(100, row_level-20, "Descripción: "+ tratamiento.descripcion)
+        p.drawString(100, row_level-40, "Fecha Inicio: "+ str(tratamiento.fch_inicio))
+        p.drawString(100, row_level-60, "Fecha Fin: "+ str(tratamiento.fch_fin))
+        
+        list_observaciones = ObservacionTratamiento.objects.all().filter(fk_tratamiento=tratamiento)
+        row_level-=70
+        p.drawString(100, row_level, "Observaciones: ")
+        for observacion in list_observaciones:
+            row_level-=10
+            p.drawString(150, row_level, "- "+ observacion.descripcion)
+
         row_level=700
         p.showPage()
 
