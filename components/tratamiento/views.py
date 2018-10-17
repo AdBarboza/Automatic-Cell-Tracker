@@ -42,8 +42,18 @@ def crear_tratamiento(request):
     return render(request, "crear_tratamiento.html",{"form":TratamientoForm})
 
 def modificar_tratamiento(request, id):
-    t = Tratamiento.objects.get(id=id)
-    form = TratamientoForm(request.POST, initial = t)
+
+    #t = Tratamiento.objects.get(id=id)
+    #form = TratamientoForm(request.POST, initial = t)
+
+    obj = Tratamiento.objects.get(id=id)
+
+    form = TratamientoForm(request.POST, request.FILES)
+    
+    form.fields['nombre'].initial = obj.nombre
+    form.fields['descripcion'].initial = obj.descripcion
+    form.fields['fch_inicio'].initial = obj.fch_inicio
+    form.fields['fch_fin'].initial = obj.fch_fin
     if request.method == "GET":
         return render(request,'modificar_tratamiento.html', {'form': form, "id":id})
 
