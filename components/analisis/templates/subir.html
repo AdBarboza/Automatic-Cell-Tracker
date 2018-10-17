@@ -11,14 +11,15 @@
       {{ form.as_p}}
     </table><input class="w3-button w3-black" type="submit" value = "Subir">
     <img class="img-fluid d-block" id="imagen" src="{{ imgsrc }}">
-    <div>
-      <a class="w3-button w3-black" href="{% url 'resultados' %}">Analizar</a>
-    </div>
+    
   </form>
 
-  <br>
-  <br>
-  <br>
+  <div>
+      <form enctype="multipart/form-data" method="post" action="{% url 'resultados' %}">
+        {% csrf_token %} 
+        <input class="w3-button w3-black" type="submit" value = "Analizar">
+    </form>
+  </div>
 
 
 </center>
