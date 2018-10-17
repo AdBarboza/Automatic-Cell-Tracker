@@ -1,0 +1,82 @@
+{% extends "layout_informe.html" %}
+
+{% block content %}
+
+<center>
+  <div>
+    <h1>Informe del {{Experimento.nombre}}</h1>
+  </div>
+  <div class="container-fluid">
+
+    <div class="row container">
+      <div class="col-sm-12" style="background-color:lavender;"></div>
+
+      <div class="container">
+
+        <table class="table table-hover">
+          <thead>
+
+          </thead>
+          <tbody>
+            <tr>
+              <td>Sexo</td>
+              <td class="Osexo">{{Experimento.sexo}}</td>
+            </tr>
+            <tr>
+              <td>Padecimiento</td>
+              <td class="Opadecimiento">{{Experimento.padecimiento}}</td>
+            </tr>
+            <tr>
+              <td>Sangre</td>
+              <td class="Osangre">{{Experimento.gp_sanguineo}} {{Experimento.factor_h}}</td>
+            </tr>
+            <tr>
+              <td>Alergias</td>
+              <td class="Oalergias">{{Experimento.alergias}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</center>
+<center>
+<div>
+  <h2>Análisis realizados</h2>
+</div>
+</center>
+{% for Analisis in object_list %}
+
+<div class="container-fluid">
+  <div class="col-sm-2" style="background-color:white;"></div>
+  <div class="col-sm-8 ">
+    <div class="panel panel-primary">
+      <div class="panel-heading blue-bg white">Código: {{Analisis.id}} - Fecha de realización:
+        {{Analisis.fch_analisis}}</div>
+      <table class="table">
+        <tr>
+          <td>
+            <p>Observaciones: {{Analisis.observaciones}}</p>
+          </td>
+          <td class="Osexo centered">
+            <center>
+              <img class="img-thumbnail" src={{Analisis.url_resultado}}>
+            </center>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="col-sm-2" style="background-color:white;"></div>
+
+</div>
+
+{% endfor %}
+<center>
+<div>
+  <h2>Tratamientos suministrados</h2>
+</div>
+</center>
+
+{% endblock %}
