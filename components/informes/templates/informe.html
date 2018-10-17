@@ -4,12 +4,21 @@
 
 <center>
 	<h1>Generación de Informes</h1>
-	<form enctype="multipart/form-data" method="post" action="{% url 'informe' %}">
+	<form enctype="multipart/form-data" method="post">
 		{% csrf_token %}
 		<table>
 			{{ form.as_p}}
-		</table><input class="w3-button w3-black" type="submit" value="Generar informe">
+		</table>
 	</form>
+
+	<center>
+		<div>
+			<a class="btn btn-default  blue-bg white" href="{% url 'informe_tratamiento'%}">Generar informe Tratamiento</a>
+		</div>
+		<div>
+			<a class="btn btn-default  blue-bg white" href="{% url 'informe_experimento'%}">Generar informe Experimento</a>
+		</div>
+	</center>
 
 	<br>
 	<br>

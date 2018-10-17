@@ -5,5 +5,7 @@ from components.informes import views as informeviews
 
 
 urlpatterns = [
-    path('', informeviews.informe, name='informe')
+    path('', informeviews.informe, name='informe'),
+    path('exp/', informeviews.informe_experimento, name='informe_experimento'),
+    path('trat', informeviews.informe_tratamiento, name='informe_tratamiento')
 ]
