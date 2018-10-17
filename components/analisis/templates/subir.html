@@ -6,13 +6,14 @@
   <h1>Análisis de imágenes</h1>
   <form enctype="multipart/form-data" method="post" action="{% url 'analisis' %}">
     {% csrf_token %}
-    <div>
-      <li><a class="btn btn-default" href="{% url 'resultados' %}">Analizar</a></li>
-    </div>
+    
     <table>
       {{ form.as_p}}
-    </table><input type="submit">
+    </table><input class="w3-button w3-black" type="submit" value = "Subir">
     <img class="img-fluid d-block" id="imagen" src="{{ imgsrc }}">
+    <div>
+      <a class="w3-button w3-black" href="{% url 'resultados' %}">Analizar</a>
+    </div>
   </form>
 
   <br>

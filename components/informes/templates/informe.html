@@ -1,0 +1,21 @@
+{% extends "layout_informe.html" %}
+
+{% block content %}
+
+<center>
+	<h1>Generación de Informes</h1>
+	<form enctype="multipart/form-data" method="post" action="{% url 'informe' %}">
+		{% csrf_token %}
+		<table>
+			{{ form.as_p}}
+		</table><input class="w3-button w3-black" type="submit" value="Generar informe">
+	</form>
+
+	<br>
+	<br>
+	<br>
+
+
+</center>
+
+{% endblock %}
