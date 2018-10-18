@@ -1,0 +1,109 @@
+{% extends "layout_informe.html" %}
+
+{% block content %}
+
+<center>
+  <div>
+    <h1>Informe del Tratamiento: {{Tratamiento.nombre}}</h1>
+  </div>
+  <div class="container-fluid">
+
+    <div class="row container">
+      <div class="col-sm-12" style="background-color:lavender;"></div>
+
+      <div class="container">
+
+        <table class="table table-hover">
+          <thead>
+
+          </thead>
+          <tbody>
+            <tr>
+              <td>Descripción</td>
+              <td class="Osexo">{{Tratamiento.descripcion}}</td>
+            </tr>
+            <tr>
+              <td>Fecha de inicio</td>
+              <td class="Opadecimiento">{{Tratamiento.fch_inicio}}</td>
+            </tr>
+            <tr>
+              <td>Fecha de finalización</td>
+              <td class="Osangre">{{Tratamiento.fch_fin}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</center>
+<center>
+  <div>
+    <h2>Experimentos Asociados</h2>
+  </div>
+</center>
+{% for Experimento in list_experimentos %}
+
+<div class="container-fluid">
+  <div class="col-sm-2" style="background-color:white;"></div>
+  <div class="col-sm-8 ">
+    <div class="panel panel-primary">
+      <div class="panel-heading blue-bg white">Nombre: {{Experimento.nombre}}</div>
+      <table class="table">
+        <tr>
+          <td>
+            <p>Sexo: {{Experimento.sexo}}</p>
+          </td>
+          <td>
+            <p>Grupo Sanguíneo: {{Experimento.gp_sanguineo}} {{Experimento.factor_h}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Alergias: {{Experimento.alergias}}</p>
+          </td>
+          <td>
+            <p>Padecimiento: {{Experimento.padecimiento}}</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="col-sm-2" style="background-color:white;"></div>
+
+</div>
+
+{% endfor %}
+<center>
+  <div>
+    <h2>Observaciones hechas</h2>
+  </div>
+</center>
+
+{% for Observacion in list_observaciones %}
+
+<div class="container-fluid">
+  <div class="col-sm-2" style="background-color:white;"></div>
+  <div class="col-sm-8 ">
+    <div class="panel panel-primary">
+      <div class="panel-heading blue-bg white">Descripción</div>
+      <table class="table">
+        <tr>
+          <p>{{Observacion.descripcion}}</p>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="col-sm-2" style="background-color:white;"></div>
+
+</div>
+
+<center>
+  <div>
+    <a class="btn btn-default  blue-bg white" href="{% url 'pdfgenerator' EXP.id%}">Descargar</a>
+  </div>
+</center>
+
+{% endfor %}
+
+{% endblock %}

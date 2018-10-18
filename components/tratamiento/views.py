@@ -25,8 +25,10 @@ def form_crear_tratamiento(request):
             descripcion = form.cleaned_data["descripcion"]
             fch_inicio = form.cleaned_data["fch_inicio"]
             fch_fin = form.cleaned_data["fch_fin"]
+
+            exp = form.cleaned_data["experimento"]
               
-            tratamiento = Tratamiento(nombre = nombre, descripcion = descripcion, fch_inicio = fch_inicio, fch_fin = fch_fin)
+            tratamiento = Tratamiento(nombre = nombre, descripcion = descripcion, fch_inicio = fch_inicio, fch_fin = fch_fin, experimento=exp)
             bitacora = Bitacora(fecha = time, categoria = "Tratamiento Registrado", descripcion = "Se ha registrado el tratamiento '" + nombre + "'.")
             bitacora.save()         
             tratamiento.save()
