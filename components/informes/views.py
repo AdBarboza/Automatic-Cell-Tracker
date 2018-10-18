@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.sessions.models import Session as session
 from django.http import HttpResponse
-from components.informes.forms import InformeForm
+from components.informes.forms import InformeFormTrat, InformeFormExp
 import requests
 from io import BytesIO
 from io import StringIO
@@ -24,32 +24,37 @@ from time import gmtime, strftime
 
 @login_required
 def informe(request):
-    form = InformeForm(request.POST, request.FILES)
+    formexp = InformeFormExp(request.POST, request.FILES)
+    formtrat = InformeFormTrat(request.POST, request.FILES)
 
-    return render(request,'informe.html',{'form': form})
+    return render(request,'informe.html',{'form_exp': formexp,'form_trat': formtrat})
 
 
 @login_required
 def informe_experimento(request):
-  form = InformeForm(request.POST, request.FILES)
-  if form.is_valid() and request.method == 'GET':
+  form = InformeFormExp(request.POST, request.FILES)
+  if form.is_valid() and (request.method == 'POST'):
     experimento = form.cleaned_data['experimento']
+    print("ME CAGO EN TODO!: "+ str(experimento.id))
     list_analisis = []
     list_tratamientos = []
     if experimento is not None:
       list_analisis = Resultado.objects.all().filter(experimento=experimento)
-      #list_tratamientos = Tratamiento.objects.all().filter(experimento=experimento)
+      list_tratamientos = Tratamiento.objects.all().filter(experimento=experimento)
     return render(request, 'informe_exp.html',{'Experimento': experimento, 'list_analisis': list_analisis, 'list_tratamientos': list_tratamientos})
+
 
 @login_required
 def informe_tratamiento(request):
-  form = InformeForm(request.POST, request.FILES)
-  if form.is_valid() and request.method == 'GET':
+  form = InformeFormTrat(request.POST, request.FILES)
+  if form.is_valid() and request.method == 'POST':
     tratamiento = form.cleaned_data['tratamiento']
+    print("ME CAGO EN TODO!: "+ str(tratamiento.id))
     list_experimentos = []
     list_observaciones = []
     if tratamiento is not None:
-      #list_experimentos = Resultado.objects.all().filter(experimento=experimento)
+      list_experimentos = [tratamiento.experimento]
       list_observaciones = ObservacionTratamiento.objects.all().filter(fk_tratamiento=tratamiento)
-    return render(request, 'informe_trat.html',{'Tratamiento': tratamiento, 'list_experimentos': list_experimentos, 'list_observaciones': list_observaciones})
+      print("ME CAGO EN TODO!: "+ str(tratamiento.id))
+    return render(request, 'informe_trat.html',{'Tratamiento': tratamiento, 'list_experimentos': list_experimentos, 'list_observaciones': list_observaciones, 'EXP':tratamiento.experimento})
 
