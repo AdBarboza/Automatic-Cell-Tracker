@@ -1,0 +1,115 @@
+{% load static %}
+
+<html>
+
+<head>
+	<title>Automatic Cell Detector</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Francois+One|Pacifico" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'fileupload/css/dropzone.css' %}">
+	<!-- <link rel="shortcut icon" href="../browser.ico"/> -->
+</head>
+
+<body>
+	<div>
+		<nav class="navbar navbar-default navigation">
+			<div class="container-fluid micro-top-space">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="">Automatic Cell Detector</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a href="{% url 'detector' %}">Home</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+
+
+	<div class="container">
+		<div>
+			<h1>Automatic Cell Tracker</h1>
+		</div>
+
+		<br>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<a href="https://www.tec.ac.cr/en/grupo-investigacion/parma"><img src="{% static 'parma.png' %}" alt="Parma Group"></a>
+				</div>
+
+				<div class="col-sm-4">
+					<a href="http://www.ciet.ucr.ac.cr/node/11"><img src="{% static 'lab.jpg' %}" alt="Laboratorio de Quimiosensibilidad Tumoral"></a>
+				</div>
+
+				<div class="col-sm-4">
+					<a href="https://www.tec.ac.cr/"><img src="{% static 'tec.png' %}" alt="Tecnológico de Costa Rica"></a>
+				</div>
+			</div>
+
+		</div>
+		</br>
+
+		<br>
+		<div>
+
+			<form class="dropzone" action="{% url 'detector' %}" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+			</form>
+
+			<script src="{% static 'fileupload/js/dropzone.js' %}"></script>
+
+		</div>
+		</br>
+		<div>
+			<button id='button_acc' onclick="myFunction('Demo1')" class="w3-button w3-block w3-left-align">
+				<h3>View Results <i id='arrow' class="arrow down"></i></h3> 
+			</button>
+
+			<div id="Demo1" class="w3-hide w3-hover-shadow w3-center">
+				{% for ImageUpload in images_processed %}
+				<div class="w3-third">
+					<div class="w3-card">
+						<img class="w3-center" src='{% static ImageUpload.path %}' style="width:50%">
+						<div class="w3-container">
+							<h4>{{ ImageUpload.filename }}</h4>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<script>
+				function myFunction(id) {
+					;
+					var x = document.getElementById(id);
+					var arrow = document.getElementById("arrow");
+					if (x.className.indexOf("w3-show") == -1) {
+						x.className += " w3-show";
+						arrow.className = 'arrow up';
+					} else {
+						x.className = x.className.replace(" w3-show", "");
+						arrow.className = 'arrow down';
+					}
+				}
+			</script>
+		</div>
+
+		</br></br></br></br></br></br>
+
+	</div>
+
+
+
+
+
+	<!-- <footer class="footer blue-bg white">
+	</footer> -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>

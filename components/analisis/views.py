@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.sessions.models import Session as session
 from django.http import HttpResponse
-from .segmentation import segmentation
+#from .segmentation import segmentation
 from components.analisis.forms import ResultadoForm, UploadFileForm
 import requests
 from io import BytesIO
@@ -30,7 +30,7 @@ def resultados(request):
     if guardado or request.method == 'GET':
         url_r = request.session['url_r']
     else:
-        url_r = segmentation.segmentacion_imagen(url)
+        #url_r = segmentation.segmentacion_imagen(url)
         request.session['url_r'] = url_r
         guardado = True
         bitacora = Bitacora(fecha = time, categoria = "Imagen Analizada", descripcion = "Se ha hecho el análisis y segmentación con éxito.")

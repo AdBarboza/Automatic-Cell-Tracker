@@ -14,6 +14,7 @@
 #==============================================================================
 #
 import os
+from io import BytesIO
 import time
 import numpy as np
 
@@ -37,7 +38,7 @@ from keras import backend as K
 class Cell_Segmentation():
 
     def __init__(self, img_rows = 256, img_cols = 256, smooth = 1, weights_path = 'weights/pre_0_3_5.h5', pred_dir = 'preds/',
-                        saveImgs = False):
+                        saveImgs = False, imgName = 'resultado.png'):
 
         self.img_rows = img_rows
         self.img_cols = img_cols
@@ -45,6 +46,7 @@ class Cell_Segmentation():
         self.weights_path = weights_path
         self.pred_dir = pred_dir
         self.saveImgs = saveImgs
+        self.imgName = imgName
 
         #Set channel configuration for backend
         K.set_image_data_format('channels_last')
@@ -191,12 +193,8 @@ class Cell_Segmentation():
             im = Image.fromarray(image_pred.astype('uint8'))
             
             if self.saveImgs:
-                name_file = './resultado.png'
+                name_file = self.imgName
                 r.append(name_file)
                 im.save(name_file)
 
         return r
-    
-
-
-

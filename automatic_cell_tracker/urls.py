@@ -8,6 +8,7 @@ from django.urls import include
 
 urlpatterns = [
     url(r'admin/', admin.site.urls),
+    path('parma/', include('components.parma.urls')),
     path('', include('components.login.urls')),
     path('analisis/', include('components.analisis.urls')),
     path('home/', include('components.home.urls')),

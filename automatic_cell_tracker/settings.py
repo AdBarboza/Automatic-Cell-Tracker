@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 # Add here your apps
 INSTALLED_APPS = [
+    'components.parma',
     'components.analisis',
     'components.home',
     'components.login',
